@@ -38,7 +38,6 @@ public class User {
 
 	@Getter
 	public static class UserInfo {
-
 		private String name;
 		private String email;
 		private String encryptPwd;
@@ -69,10 +68,10 @@ public class User {
 		private String name;
 		private String email;
 
-		public Response(UserEntity userEntity) {
-			this.userId = userEntity.getUserId();
-			this.name = userEntity.getName();
-			this.email = userEntity.getEmail();
+		public Response(User.UserInfo userInfo) {
+			this.userId = userInfo.getUserId();
+			this.name = userInfo.getName();
+			this.email = userInfo.getEmail();
 		}
 	}
 }

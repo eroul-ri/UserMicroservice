@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
 	private final UserRepository userRepository;
 
-	public void registerUser(User.UserInfo userInfo) throws UserServiceException {
+	public User.UserInfo registerUser(User.UserInfo userInfo) throws UserServiceException {
 		userInfo.setUserId(UUID.randomUUID().toString());
 
 		UserEntity userEntity = userInfo.toEntity();
@@ -27,5 +27,6 @@ public class UserService {
 		if(userEntity.getId() == null) {
 			throw new UserServiceException(ERR_CODE.SIGN_UP_FAIL);
 		}
+		return userInfo;
 	}
 }

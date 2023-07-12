@@ -38,12 +38,11 @@ public class UserController {
 	}
 
 	@PostMapping("/users")
-	public ResponseEntity registerUser(@RequestBody @Valid User.Request request) throws UserServiceException {
+	public ResponseEntity<User.Response> registerUser(@RequestBody @Valid User.Request request) throws
+		UserServiceException {
 		User.UserInfo userInfo = request.toUserInfo();
 
-		userService.registerUser(userInfo);
-
 		return ResponseEntity.status(HttpStatus.CREATED)
-							 .build();
+							 .body(new User.Response(userService.registerUser(userInfo)));
 	}
 }
