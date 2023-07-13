@@ -28,7 +28,6 @@ public class UserController {
 
 	@GetMapping("/health")
 	public ResponseEntity<Health.Response> status(HttpServletRequest request) {
-
 		return ResponseEntity.ok(new Health.Response(true, request.getServerPort()));
 	}
 
